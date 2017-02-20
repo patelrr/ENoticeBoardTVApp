@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>autoscroll.js</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="jquery-3.1.1.js"></script> -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: white;
+        }
+        
+        .imgnotice {
+            width: 100%;
+            height: 100vh;
+        }
+        
+        .texture {
+            background-color: #03000d;
+            background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+            text-align: center;
+            font-family: 'Roboto Mono', monospace;
+            color: white;
+            /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+        }
+        
+        .text {
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        .back {
+            background-color: #000000;
+            background-image: url("https://www.transparenttextures.com/patterns/blizzard.png");
+            /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+        }
+        
+        .card-block {
+            padding: 5px;
+        }
+        
+        .AutoScroll {
+            background-color: #191919;
+            color: #fff;
+            position: relative;
+            top: 0px;
+            max-height: 820px;
+            width: 920px;
+            overflow-y: hidden;
+            padding: 0px;
+            border: 1px solid #121212;
+        }
+    </style>
+</head>
+
+<body ng-app="EnoticeBoardWebApp">
+    <div>
+        <div class="row">
+            <div class="col-lg-3 texture"> LATEST NOTICE DETAILS </div>
+            <div class="col-lg-5 texture"> NOTICE LAST 5 DAYS </div>
+            <div class="col-lg-4 texture"> NOTICE LAST 10 DAYS </div>
+        </div>
+        <div class="row">
+            <div style="overflow: hidden;height : 100%;" class="col-lg-3">
+                <!--
+                <div class="card">
+                    <div class="card-header"> {{user.time}} </div>
+                    <div class="card-block">
+                        <div ng-if="user.$id == artt.$id">
+                            <p style="color: red;" class="text">Title : {{user.title}}
+                                <br>Description : {{user.Desc}}</p>
+                        </div>
+                        <div ng-if="user.$id != artt.$id">
+                            <p class="text">Title : {{user.title}}
+                                <br>Description : {{user.Desc}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-block"> This is some text within a card block. </div>
+                </div>
+                -->
+                <div ng-repeat="user in articles">
+                    <div class="card">
+                        <div class="card-block">
+                            <div ng-if="user.$id == artt.$id"> <span class="pull-right">{{user.time}}</span>
+                                <p style="color: red;" class="text">Title : {{user.title}} </p>
+                                <p style="color: red;" class="text">Description : {{user.Desc}}</p>
+                            </div>
+                            <div ng-if="user.$id != artt.$id"><span class="pull-right">{{user.time}}</span>
+                                <p class="text">Title : {{user.title}}</p>
+                                <p class="text">Description : {{user.Desc}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5"> <img class="imgnotice" id="img1" src="{{artt.images}}"> </div>
+            <div class="col-lg-4">
+                <div ng-repeat="user1 in articles"> <img class="imgnotice" id="img2" src="{{user1.images}}"> </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var myIndex = 0;
+        console.log("In script");
+        /*
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) {
+                myIndex = 1
+            }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 2000); // Change image every 2 seconds
+        }*/
+    </script>
+</body>
+
+</html>
