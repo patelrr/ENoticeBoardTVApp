@@ -6,8 +6,12 @@ angular.module('EnoticeBoardWebApp.welcome', ['ngRoute', 'firebase']).config(['$
     });
 }]).controller('WelcomeCtrl', ['$scope', '$timeout', 'CommonProp', '$firebaseArray', function ($scope, $timeout, CommonProp, $firebaseArray) {
     //var timeint = 100;
+    var te = firebase.database().ref().child('posts').child('Mech').child('Approved').orderByChild('type').equalTo(3);
+        $scope.testpdf = $firebaseArray(te);
+       
+    console.log($scope.testpdf);
     setInterval(function () {
-        const ref = firebase.database().ref().child('posts').child('CSE').child('Deptposts').orderByChild("approved").equalTo("true");
+        var ref = firebase.database().ref().child('posts').child('Mech').child('Approved').orderByChild("servertime");
         $scope.articles = $firebaseArray(ref);
         $scope.articles.$loaded().then(function () {
             var pictime = 20000 / $scope.articles.length;
